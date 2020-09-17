@@ -1,6 +1,0 @@
-The TesseractWorker is depreciated in newer versions of tesseract.js and tesseract.js-core so you must use createWorker() instead.
-
-const { createWorker } = require("tesseract.js");
-const worker = new createWorker({
-  logger: m => console.log(m),
-});

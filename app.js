@@ -2,9 +2,11 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const multer = require('multer');
-const { TesseractWorker } = require('tesseract.js')
+const { TesseractWorker } = require('tesseract.js');
+const cors = require('cors');
 const worker = new TesseractWorker();
 
+app.use(cors())
 
 // multer disk storage
 const storage = multer.diskStorage({
