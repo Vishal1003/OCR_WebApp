@@ -24,7 +24,7 @@ app.set("view engine", "ejs");
 
 // routes
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {text : "Output will appear here!"});
 })
 
 app.post('/upload', (req, res) => {
@@ -40,11 +40,17 @@ app.post('/upload', (req, res) => {
                 console.log(progress);
             })
             .then(result => {
-                res.send(result.text);
+                res.render('download', {text : result.text});
+                // res.send(result.text);
             })
             .finally(() => worker.terminate());
         })
     })
+})
+
+app.get('/download_file', (req, res) => {
+    const file = `${__dirname}/tesseract.js-ocr-result.pdf`;
+    res.download(file);
 })
 
 const PORT = process.env.PORT || 5000;

@@ -48,6 +48,7 @@
 
         .box {
             border: solid #7f8049 3px;
+            border-radius: 25px;
             height: 100%;
             max-width: 95%;
         }
@@ -59,6 +60,15 @@
             width: 100%;
             height: 100%;
             font-size: x-large;
+        }
+
+        #rcorners2 {
+            border-radius: 25px;
+            border: 2px solid whitesmoke;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            font-size: large;
         }
 
 
@@ -88,13 +98,14 @@
 
 <body ng-controller="ctrl">
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <i class="fa fa-search faa-pulse animated"></i> <span style="color: orange; font-weight: 500;">OCR</span>
             Web
         </a>
     </nav>
     <div class="container" style="padding-top: 50px;">
-        <p id="rcorners1">This is a web app which uses the Tesseract API for <span style="color: orange;">Optical Image Recognition</span>. Tesseract.js is
+        <p id="rcorners1">This is a web app which uses the Tesseract API for <span style="color: orange;">Optical Image
+                Recognition</span>. Tesseract.js is
             a pure Javascript port of the popular Tesseract OCR engine.
             <br>
             <br>
@@ -116,8 +127,7 @@
                         <form action="/upload" method="POST" enctype="multipart/form-data" target="frame">
                             <div class="input-group col-md-10 col-sm-10">
                                 <input type="file" name="avatar" />
-                                <button class="btn btn-success" type="submit">Convert
-                                    <i class="fa fa-upload faa-float animated"></i> </button>
+                                <button class="btn btn-success" type="submit">Convert</button>
                             </div>
                         </form>
                         <!-- <h1>Image to PDF</h1>
@@ -130,7 +140,7 @@
 
                     <hr>
 
-                    <div class="row" style="padding-right : 15px;">
+                    <div class="row" style="padding-right : 35px;">
                         <div class="col-md-6 col-sm-12">
                             <br><br>
                             <!--Display uploaded image-->
@@ -139,8 +149,9 @@
                         </div>
                         <div class="col-md-6 col-sm-12" style="padding-top: 10px;"><br><br>
                             <!--MultiPart FormData response stored here-->
-                            <iframe id="frame" name="frame" class="iframe well box" height="500px"
-                                style="font-family: 'Times New Roman', Times, serif; background-color: white;"></iframe>
+                            <p id="rcorners2">
+                                <%= text %>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -153,7 +164,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright-text">
-                        <p class="love">Made with <i class="fa fa-heart"></i> by <span style="color: orange;">Vishal</span></p>
+                        <p class="love">Made with <i class="fa fa-heart"></i> by <span
+                                style="color: orange;">Vishal</span></p>
                     </div>
 
                     <div class="go_top">
