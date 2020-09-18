@@ -24,26 +24,29 @@ app.set("view engine", "ejs");
 
 // routes
 app.get('/', (req, res) => {
-    res.render('index', {text : "Output will appear here!"});
+    res.render('index', { text: "Output will appear here!" });
 })
 
 app.post('/upload', (req, res) => {
     upload(req, res, err => {
         // console.log(req.file);
+        if (!req.file)
+            return res.send('Please upload a file')
+
         fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
-            if(err) 
-               return console.log('Error occured :', err);
-            
+            if (err)
+                return console.log('Error occured :', err);
+
             worker
-            .recognize(data, "eng", {tessjs_create_pdf : '1'})
-            .progress(progress => {
-                console.log(progress);
-            })
-            .then(result => {
-                res.render('download', {text : result.text});
-                // res.send(result.text);
-            })
-            .finally(() => worker.terminate());
+                .recognize(data, "eng", { tessjs_create_pdf: '1' })
+                .progress(progress => {
+                    console.log(progress);
+                })
+                .then(result => {
+                    res.render('download', { text: result.text });
+                    // res.send(result.text);
+                })
+                .finally(() => worker.terminate());
         })
     })
 })
