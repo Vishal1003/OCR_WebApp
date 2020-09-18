@@ -1,4 +1,4 @@
-# 📔🔍 OCR WebApp
+# 📔 OCR WebApp
 A Web App for Optical Character Recognition using Tesseract.js
 
 ## About
